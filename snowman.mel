@@ -1,0 +1,94 @@
+//create body
+polySphere -n base -radius 3 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0 3 0 ;
+
+polySphere -n middle -radius 2 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0 7 0 ;
+
+polySphere -n head -radius 1.2 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0 9.5 0 ;
+
+//creat nose
+polyCone -n nose -radius 1 -height 2 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 0 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+setAttr "nose.rotateZ" 90;
+setAttr "nose.scaleX" .3;
+setAttr "nose.scaleY" .75;
+setAttr "nose.scaleZ" .3;
+move -relative 0 9.5 0 ;
+move -relative -1.85 0 0 ;
+
+//create arms
+polyCylinder -n arm1 -radius 1 -height 2 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+setAttr "arm1.rotateX" 60;
+setAttr "arm1.scaleX" .255;
+setAttr "arm1.scaleZ" .255;
+move -relative 0 7.5 0 ;
+move -relative 0 0 2.7 ;
+
+polyCylinder -n arm2 -radius 1 -height 2 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+setAttr "arm2.rotateX" -60;
+setAttr "arm2.scaleX" .255;
+setAttr "arm2.scaleZ" .255;
+move -relative 0 7.5 0 ;
+move -relative 0 0 -2.7 ;
+
+//create buttons
+polySphere -n button1 -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+setAttr "button1.scaleX" .07;
+setAttr "button1.scaleY" .3;
+setAttr "button1.scaleZ" .3;
+setAttr "button1.rotateZ" -5.8;
+move -relative -3 0 0 ;
+move -relative 0 3 0 ;
+
+polySphere -n button2 -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+setAttr "button2.scaleX" .07;
+setAttr "button2.scaleY" .3;
+setAttr "button2.scaleZ" .3;
+setAttr "button2.rotateZ" -5.8;
+move -relative -2 0 0 ;
+move -relative 0 7.05 0 ;
+
+polySphere -n button3 -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+setAttr "button3.scaleX" .07;
+setAttr "button3.scaleY" .3;
+setAttr "button3.scaleZ" .3;
+setAttr "button3.rotateZ" -43;
+move -relative -1.4 0 0 ;
+move -relative 0 8.4 0 ;
+
+polySphere -n button4 -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+setAttr "button4.scaleX" .07;
+setAttr "button4.scaleY" .3;
+setAttr "button4.scaleZ" .3;
+setAttr "button4.rotateZ" -38.4;
+move -relative -2.35 0 0 ;
+move -relative 0 4.8 0 ;
+
+//create eyes
+polySphere -n eye1 -radius 1 -subdivisionsX 5 -subdivisionsY 5 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+setAttr "eye1.scaleX" .1;
+setAttr "eye1.scaleY" .25;
+setAttr "eye1.scaleZ" .25;
+setAttr "eye1.rotateX" 6.5;
+setAttr "eye1.rotateY" -32;
+setAttr "eye1.rotateZ" -12;
+move -relative -1.1 0 0 ;
+move -relative 0 9.74 0 ;
+move -relative 0 0 -.65 ;
+select -replace eye1.f[10] ;
+move -relative -0.05 -0.33 0.23 ;
+
+polySphere -n eye2 -radius 1 -subdivisionsX 5 -subdivisionsY 5 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+setAttr "eye2.scaleX" .1;
+setAttr "eye2.scaleY" .25;
+setAttr "eye2.scaleZ" .25;
+setAttr "eye2.rotateX" -6.7;
+setAttr "eye2.rotateY" 23.3;
+setAttr "eye2.rotateZ" -12.7;
+move -relative -1.1 0 0 ;
+move -relative 0 9.74 0 ;
+move -relative 0 0 .65 ;
+select -replace eye2.f[12] ;
+move -r 0 -0.1 -0.043 ;
+
