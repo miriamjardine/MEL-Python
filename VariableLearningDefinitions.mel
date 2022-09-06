@@ -1,0 +1,17 @@
+int $number;
+$number = 27;
+print ($number);
+
+string $name;
+$name = "david";
+print ($name);
+
+float $price = 29.99;
+print ($price);
+
+// boolean
+int $grade = 1;
+
+//array
+float $position[] = {-8.1, -1.8, 9.4};
+print ($position);

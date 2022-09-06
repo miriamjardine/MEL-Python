@@ -1,0 +1,19 @@
+
+//dictates snowman size
+float $size = 3;
+
+//still looks like a snowman if variable is between 1.2 and 1.9
+float $melt = 1.9;
+
+//create base
+polySphere -name base -radius $size -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace 0 $size 0;
+
+//create middle
+polySphere -name middle -radius ($size*.6) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace 0 (($size * $melt) + ($size*.6)) 0;
+
+//create head
+polySphere -name head -radius ($size*.3) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace 0 (($size * $melt) + (($size*.6)*$melt) + ($size*.3)) 0;
+
