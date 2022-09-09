@@ -1,0 +1,11 @@
+// proc means proceeder
+
+proc SayHello()
+{
+    //code block
+    print ("Hello World!");
+}
+
+SayHello();
+
+//Once the proc is in the memory, it will know what to do when you initiate the function.

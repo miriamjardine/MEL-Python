@@ -1,0 +1,13 @@
+//parameters and arguements
+
+
+                //parameter: Variables constrained within the function
+proc SayHello(string $name, int $age)
+{
+    print("Hello " +$name + "! Welcome to Maya!\n");
+    print ("Happy Birthday! You're " + $age + "years old!\n");
+}
+
+        //arguement: declares the parameters
+SayHello("Tim", 34);
+SayHello("Mark", 56);
