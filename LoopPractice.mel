@@ -1,0 +1,30 @@
+int $i = 2;
+while ($i <= 10)
+{
+    print($i+"\n");
+    $i+=2;
+}
+
+for($i=1; $i<=10; $i++)
+{
+   if($i%2!=0)
+   {
+    print($i+"\n");
+   }
+}
+
+proc PrintNumbers(int $start, int $end)
+{
+    for($i=$start; $i<=$end; $i++)
+    {
+        if($i % 2 == 0)
+        {
+            print ("Even: " + $i + "\n");
+        }
+        else
+        {
+            print("Odd: " + $i + "\n");
+        }
+    }
+}
+PrintNumbers(1,5);
