@@ -1,0 +1,27 @@
+//Stair variables
+int $stairWidth = 4;
+int $stairHeight = 1;
+int $stairDepth = 10;
+int $stairGap = 4;
+int $maxStairs = 15;
+int $rotating = 15;
+
+//Cylinder variables
+int $cylinderRadius = 2;
+
+//Uneditable. Will break the code if you change them.
+int $cylinderHeight = ($maxStairs*$stairGap);
+int $currentStairNumber = 1;
+int $stairBottom = 0;
+
+
+for($currentStairNumber = 1; $currentStairNumber <= $maxStairs; $currentStairNumber++)
+{
+    polyCube -name stairs -width $stairWidth -height $stairHeight -depth ($stairDepth*2) -subdivisionsX 1 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -createUVs 4 -constructionHistory 1;
+    rotate -centerPivot -relative -objectSpace -forceOrderXYZ 0 ($rotating*$currentStairNumber*10) 0;
+    int $staircaseHeight = $stairBottom += $stairGap;
+    move -relative 0 $staircaseHeight 0; 
+}
+
+polyCylinder -radius $cylinderRadius -height $cylinderHeight -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative 0 ($cylinderHeight/2) 0; 
