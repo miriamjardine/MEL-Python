@@ -1,0 +1,30 @@
+
+//proc is basically void
+
+proc string NamePicker()
+{
+    string $names[] = {"Mary","Jane","Tina","Cameron","Tuck","Dax","Lily"};
+    //Array
+    int $size = size($names);
+    int $randNum = `rand $size`;
+    //print ($names[$randNum] + "\n");
+    
+    return ($names[$randNum]);
+}
+
+proc int RandomNumber(int $num)
+{
+    int $randNum = `rand $num`;
+    return ($randNum);
+}
+
+print (NamePicker() + "'s favourite number is " + RandomNumber(100) + "!\n");
+
+proc int AddRandomNumber(int $num)
+{
+    int $randNum = `rand $num`;
+    print ("This random number is" + $randNum + ".\n");
+    return ($randNum);
+}
+
+print (AddRandomNumber(100)+AddRandomNumber(100));
