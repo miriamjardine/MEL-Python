@@ -1,0 +1,50 @@
+/* Sum (addition) of 2 or more float values
+Difference (subtraction ) of 2 or more values
+Multiplication of 2 or more values
+Division of 2 or more values
+Power (x raised power n, eg. x³)
+Mean (or average)
+Median */
+
+global proc Sum(float $num1, float $num2, float $num3, float $num4, float $num5)
+{
+    float $sum = $num1 + $num2 + $num3 + $num4 + $num5;
+    print($num1 + " + " + $num2 + " + " + $num3 + " + " + $num4 + " + " + $num5 + " = " + $sum + "\n");
+}
+
+Sum(1,2,3,4,5);
+
+global proc Diff(float $num1, float $num2, float $num3, float $num4, float $num5)
+{
+    float $diff = $num1 - $num2 - $num3 - $num4 - $num5;
+    print($num1 + " - " + $num2 + " - " + $num3 + " - " + $num4 + " - " + $num5 + " = " + $diff + "\n");
+}
+
+Diff(5,4,3,2,1);
+
+global proc Mult(float $num1, float $num2, float $num3, float $num4, float $num5)
+{
+    float $mult = $num1 * $num2 * $num3 * $num4 * $num5;
+    print($num1 + " x " + $num2 + " x " + $num3 + " x " + $num4 + " x " + $num5 + " = " + $mult + "\n");
+}
+
+Mult(1,2,3,4,5);
+
+global proc Div(float $num1, float $num2, float $num3, float $num4, float $num5)
+{
+    float $div = $num1 / $num2 / $num3 / $num4 / $num5;
+    print($num1 + " / " + $num2 + " / " + $num3 + " / " + $num4 + " / " + $num5 + " = " + $div + "\n");
+}
+
+Div(100,2,4,5,1);
+
+/* 
+THIS ONE NEEDS FIXING
+
+global proc Power(float $num1, float $num2)
+{
+    pow $num1 $num2;
+  // print($num1 + " to the power of " + $num2 + " = " + $power + "\n");
+}
+
+Power(2,4); */
