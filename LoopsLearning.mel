@@ -3,9 +3,9 @@
 //statement 2: define a condition
 //statement 3: executed every time after the code block
 
-for($i = 0, $i < 5; $i++)
+for($i = 0; $i < 5; $i++)
 {
-    print($i + "\n")
+    print($i + "\n");
 }
 
 print ("Loop is done");
@@ -14,14 +14,14 @@ print ("Loop is done");
 int $i = 0;
 while($i<10)
 {
-    print($i+"\n")
+    print($i+"\n");
     $i+=2;
 }
 
 //do..while loop: runs once, then checks condition
 do
 {
-    print($i+"\n")
+    print($i+"\n");
     $i++;
 
 } while($i<10);

@@ -1,64 +1,89 @@
-/* Sum (addition) of 2 or more float values
-Difference (subtraction ) of 2 or more values
-Multiplication of 2 or more values
-Division of 2 or more values
-Power (x raised power n, eg. x³)
-Mean (or average)
-Median */
 
-global proc Sum(float $num1, float $num2, float $num3, float $num4, float $num5)
+//Operation 1: Add three float variables together. 
+global proc Sum(float $num1, float $num2, float $num3)
 {
-    float $sum = $num1 + $num2 + $num3 + $num4 + $num5;
-    print($num1 + " + " + $num2 + " + " + $num3 + " + " + $num4 + " + " + $num5 + " = " + $sum + "\n");
+    float $sum = $num1 + $num2 + $num3;
+    print($num1 + " + " + $num2 + " + " + $num3 + " = " + $sum + "\n");
 }
 
-Sum(1,2,3,4,5);
-
-global proc Diff(float $num1, float $num2, float $num3, float $num4, float $num5)
+//Operation 2: Subtract three float variables.
+global proc Diff(float $num1, float $num2, float $num3)
 {
-    float $diff = $num1 - $num2 - $num3 - $num4 - $num5;
-    print($num1 + " - " + $num2 + " - " + $num3 + " - " + $num4 + " - " + $num5 + " = " + $diff + "\n");
+    float $diff = $num1 - $num2 - $num3;
+    print($num1 + " - " + $num2 + " - " + $num3 + " = " + $diff + "\n");
 }
 
-Diff(5,4,3,2,1);
-
-global proc Mult(float $num1, float $num2, float $num3, float $num4, float $num5)
+//Operation 3: Multiply three float variables together.
+global proc Mult(float $num1, float $num2, float $num3)
 {
-    float $mult = $num1 * $num2 * $num3 * $num4 * $num5;
-    print($num1 + " x " + $num2 + " x " + $num3 + " x " + $num4 + " x " + $num5 + " = " + $mult + "\n");
+    float $mult = $num1 * $num2 * $num3;
+    print($num1 + " x " + $num2 + " x " + $num3 + " = " + $mult + "\n");
 }
 
-Mult(1,2,3,4,5);
-
-global proc Div(float $num1, float $num2, float $num3, float $num4, float $num5)
+//Operation 4: Divid three float variables.
+global proc Div(float $num1, float $num2, float $num3)
 {
-    float $div = $num1 / $num2 / $num3 / $num4 / $num5;
-    print($num1 + " / " + $num2 + " / " + $num3 + " / " + $num4 + " / " + $num5 + " = " + $div + "\n");
+    float $div = $num1 / $num2 / $num3;
+    print($num1 + " / " + $num2 + " / " + $num3 + " = " + $div + "\n");
 }
 
-Div(100,2,4,5,1);
-
-/* 
-THIS ONE NEEDS FIXING
-
-global proc Power(float $num1, float $num2)
+//Operation 5: Find the average of three float variables.
+global proc Mean(float $num1, float $num2, float $num3)
 {
-    pow $num1 $num2;
-  // print($num1 + " to the power of " + $num2 + " = " + $power + "\n");
+    float $mean = ($num1 + $num2 + $num3)/3;
+    print("The average of " + $num1 + ", " + $num2 + ", & " + $num3 + " is " + $mean + ".\n");
+}
+ 
+//Operation 6: Float Variable (1) ^ Float Variable (2)
+global proc Power(float $num1, float $num2, float $num3)
+{
+    float $power = `pow $num1 $num2`;
+    print($num1 + " to the power of " + $num2 + " = " + $power + ". Your third value: " + $num3 + " was not included in the procedure.\n");
 }
 
-Power(2,4); */
-
-global proc Mean(float $num1, float $num2, float $num3, float $num4, float $num5)
+//Operation 7: Find the median of three variables.
+global proc Med(float $num1, float $num2, float $num3)
 {
-    float $mean = ($num1 + $num2 + $num3 + $num4 + $num5)/5;
-    print("The average of " + $num1 + ", " + $num2 + ", " + $num3 + ", " + $num4 + ", & " + $num5 + " is " + $mean + ".\n");
+    float $medVal = `clamp $num1 $num2 $num3`; 
+    print("The median of " + $num1 + ", " + $num2 + ", & " + $num3 + " is " + $medVal + ".\n");
 }
 
-Mean(1,2,4,5,6);
-
-global proc Med(float $num1, float $num2, float $num3, float $num4, float $num5)
+//Calculate
+global proc Calculate(float $num1, float $num2, float $num3, int $operation)
 {
-    $value = constrainValue $num1 $num2 $num3 $num4 $num5;
-    return ($value);
+    if ($operation == 1)
+    {
+        Sum($num1, $num2, $num3);
+    }
+    else if ($operation == 2)
+    {
+        Diff($num1, $num2, $num3);
+    }
+    else if ($operation == 3)
+    {
+        Mult($num1, $num2, $num3);
+    }
+    else if ($operation == 4)
+    {
+       Div($num1, $num2, $num3);
+    }
+    else if ($operation == 5)
+    {
+       Mean($num1, $num2, $num3);
+    }
+    else if ($operation == 6)
+    {
+       Power($num1, $num2, $num3);
+    }
+    else if ($operation == 7)
+    {
+       Med($num1, $num2, $num3);
+    }
+    else
+    {
+        print ("Please enter 5 valid float variables followed by an integer between 1 and 7.\n");
+    }
 }
+
+//Call Function: Enter three float values then an operation integer between 1 and 7.
+Calculate(1.5,2.6,3.8,5);
