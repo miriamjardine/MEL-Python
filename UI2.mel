@@ -1,0 +1,15 @@
+string $mainWindow = `window`;
+string $mainColumn = `columnLayout`;
+string $mainRow = `rowLayout -numberOfColumns 3`;
+string $rowColumn = `columnLayout -parent $mainRow`;
+
+button -parent $mainRow;
+button -parent $rowColumn;
+button -parent $mainRow;
+button -parent $mainColumn;
+button -parent $rowColumn;
+button -parent $mainColumn;
+button -parent $mainColumn;
+intField -parent $mainColumn;
+
+showWindow $mainWindow;
