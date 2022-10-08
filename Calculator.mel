@@ -1,51 +1,51 @@
 
 //Operation 1: Add three float variables together. 
-global proc Sum(float $num1, float $num2, float $num3)
+global proc string Sum(float $num1, float $num2, float $num3)
 {
     float $sum = $num1 + $num2 + $num3;
-    print($num1 + " + " + $num2 + " + " + $num3 + " = " + $sum + "\n");
+    return($num1 + " + " + $num2 + " + " + $num3 + " = " + $sum + "\n");
 }
 
 //Operation 2: Subtract three float variables.
-global proc Diff(float $num1, float $num2, float $num3)
+global proc string Diff(float $num1, float $num2, float $num3)
 {
     float $diff = $num1 - $num2 - $num3;
-    print($num1 + " - " + $num2 + " - " + $num3 + " = " + $diff + "\n");
+    return($num1 + " - " + $num2 + " - " + $num3 + " = " + $diff + "\n");
 }
 
 //Operation 3: Multiply three float variables together.
-global proc Mult(float $num1, float $num2, float $num3)
+global proc string Mult(float $num1, float $num2, float $num3)
 {
     float $mult = $num1 * $num2 * $num3;
-    print($num1 + " x " + $num2 + " x " + $num3 + " = " + $mult + "\n");
+    return($num1 + " x " + $num2 + " x " + $num3 + " = " + $mult + "\n");
 }
 
 //Operation 4: Divid three float variables.
-global proc Div(float $num1, float $num2, float $num3)
+global proc string Div(float $num1, float $num2, float $num3)
 {
     float $div = $num1 / $num2 / $num3;
-    print($num1 + " / " + $num2 + " / " + $num3 + " = " + $div + "\n");
+    return($num1 + " / " + $num2 + " / " + $num3 + " = " + $div + "\n");
 }
 
 //Operation 5: Find the average of three float variables.
-global proc Mean(float $num1, float $num2, float $num3)
+global proc string Mean(float $num1, float $num2, float $num3)
 {
     float $mean = ($num1 + $num2 + $num3)/3;
-    print("The average of " + $num1 + ", " + $num2 + ", & " + $num3 + " is " + $mean + ".\n");
+    return("The average of " + $num1 + ", " + $num2 + ", & " + $num3 + " is " + $mean + ".\n");
 }
  
 //Operation 6: Float Variable (1) ^ Float Variable (2)
-global proc Power(float $num1, float $num2, float $num3)
+global proc string Power(float $num1, float $num2, float $num3)
 {
     float $power = `pow $num1 $num2`;
-    print($num1 + " to the power of " + $num2 + " = " + $power + ". Your third value: " + $num3 + " was not included in the procedure.\n");
+    return($num1 + " to the power of " + $num2 + " = " + $power + ". Your third value: " + $num3 + " was not included in the procedure.\n");
 }
 
 //Operation 7: Find the median of three variables.
-global proc Med(float $num1, float $num2, float $num3)
+global proc string Med(float $num1, float $num2, float $num3)
 {
     float $medVal = `clamp $num1 $num2 $num3`; 
-    print("The median of " + $num1 + ", " + $num2 + ", & " + $num3 + " is " + $medVal + ".\n");
+    return("The median of " + $num1 + ", " + $num2 + ", & " + $num3 + " is " + $medVal + ".\n");
 }
 
 //Calculate
@@ -85,5 +85,61 @@ global proc Calculate(float $num1, float $num2, float $num3, int $operation)
     }
 }
 
-//Call Function: Enter three float values then an operation integer between 1 and 7.
-Calculate(1.5,2.6,3.8,5);
+
+global proc Calc_ButtonCmd()
+{
+    string $firstFloatField = `optionVar -q "firstFloatField"`;
+    string $secondFloatField = `optionVar -q "secondFloatField"`;
+    string $thirdFloatField = `optionVar -q "thirdFloatField"`;
+    string $operField = `optionVar -q "calcOperation"`;
+    string $resultField = `optionVar -q "calcResult"`;
+
+    string $firstFloat = `floatField -q -value $firstFloatField`;
+    string $secondFloat = `floatField -q -value $secondFloatField`;
+    string $thirdFloat = `floatField -q -value $thirdFloatField`;
+    string $oper = `radioButtonGrp -q -select $operField`;
+
+    string $result = Calculate($firstFloat, $secondFloat, $thirdFloat, $oper);
+    textField -e text $result $resultField;
+}
+
+
+global proc CalculatorUI()
+{
+    
+string $mWindow = "calcWindow";
+
+if(`window -exists $mWindow`)
+    deleteUI $mWindow;
+
+$mWindow = `window -title "Calculator" 
+                -widthHeight 300 400
+                -resizeToFitChildren 1
+                $mWindow`;
+string $mColumn = `columnLayout -parent $mWindow -adjustableColumn 1`;
+optionVar -stringValue "firstFloatField" `floatField -parent $mColumn`;
+optionVar -stringValue "secondFloatField" `floatField -parent $mColumn`;
+optionVar -stringValue "thirdFloatField" `floatField -parent $mColumn`;
+optionVar -stringValue "calcOperation" `radioButtonGrp -parent $mColumn -numberOfRadioButtons 3 -labelArray3 "Sum" "Diff" "Mult"`;
+//optionVar -stringValue "calcOperation2" `radioButtonGrp -parent $mColumn -numberOfRadioButtons 4 -labelArray4 "Div" "Mean" "Power" "Med"`;
+
+/* frameLayout -parent $mColumn  -label "Operations";
+    string $collection1 = `radioCollection`;
+    string $rb1, $rb2, $rb3, $rb4, $rb5, $rb6, $rb7;
+    $rb1 = `radioButton -label "Sum"`; 
+    $rb2 = `radioButton -label "Difference"`;
+    $rb3 = `radioButton -label "Multiply"`;
+    $rb4 = `radioButton -label "Divid"`;
+    $rb5 = `radioButton -label "Mean"`;
+    $rb6 = `radioButton -label "Power"`;
+    $rb7 = `radioButton -label "Median"`;
+
+radioCollection -edit -select $rb2 $collection1; */
+
+button -parent $mColumn -label "Calculate" -command "Calc_ButtonCmd";
+optionVar -stringValue "CalcResult" `textField -parent $mColumn -editable 0`;
+
+showWindow $mWindow;
+}
+
+CalculatorUI();
