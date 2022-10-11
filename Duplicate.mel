@@ -1,0 +1,72 @@
+global proc Duplicate(int $minX, int $minY, int $minZ, int $maxX, int $maxY, int $maxZ, int $duplicateInt)
+{
+    int $minX;
+    int $minY;
+    int $minZ;
+    int $maxX;
+    int $maxY;
+    int $maxZ;
+    int $duplicateInt;
+    
+   // int $randPosition = `rand <<$minX, $minY, $minZ>> <<$maxX, $maxY, $maxZ>>`;
+
+    for($i=1; $i<=$duplicateInt; $i++)
+    {
+    select;
+    duplicate -returnRootsOnly;
+    int $randPosition = `rand <<$minX, $minY, $minZ>> <<$maxX, $maxY, $maxZ>>`;
+    move $randPosition;
+    }
+
+}
+
+Duplicate(1, 1, 1, 10, 10, 10, 4);
+
+global proc DuplicateCmd()
+{
+    string $minXField = `optionVar -q "minXField"`;
+    string $minYField = `optionVar -q "minYField"`;
+    string $minZField = `optionVar -q "minZField"`;
+    string $maxXField = `optionVar -q "maxXField"`;
+    string $maxYField = `optionVar -q "maxYField"`;
+    string $maxZField = `optionVar -q "maxZField"`;
+    string $duplicateIntField = `optionVar -q "duplicate"`;
+
+    string $minX = `intField -q -value $minXField`;
+    string $minY = `intField -q -value $minYField`;
+    string $minZ = `intField -q -value $minZField`;
+    string $maxX = `intField -q -value $maxXField`;
+    string $maxY = `intField -q -value $maxYField`;
+    string $maxZ = `intField -q -value $maxZField`;
+    string $duplicateInt = `intField -q -value $duplicateIntField`;
+
+    string $result = Duplicate($minX, $minY, $minZ, $maxX, $maxY, $maxZ, $duplicateInt);
+}
+
+global proc DuplicateUI()
+{
+    string $mWindow = "duplicateWindow";
+
+    if(`window -exists $mWindow`)
+        deleteUI $mWindow;
+
+    $mWindow = `window -title "Duplicate" 
+                    -widthHeight 300 400
+                    -resizeToFitChildren 1
+                    $mWindow`;
+    string $mColumn1 = `columnLayout -parent $mWindow -adjustableColumn 1`;
+    string $mColumn2 = `columnLayout -parent $mWindow -adjustableColumn 1`;
+
+    optionVar -stringValue "duplicate" `intField -parent $mColumn1`;
+    optionVar -stringValue "minXField" `intField -parent $mColumn1`;
+    optionVar -stringValue "minYField" `intField -parent $mColumn1`;
+    optionVar -stringValue "minZField" `intField -parent $mColumn1`;
+    optionVar -stringValue "maxXField" `intField -parent $mColumn2`;
+    optionVar -stringValue "maxYField" `intField -parent $mColumn2`;
+    optionVar -stringValue "maxZField" `intField -parent $mColumn2`;
+
+    button -parent $mColumn1 -label "Duplicate" -command "DuplicateCmd";
+    
+    showWindow $mWindow;
+
+}
