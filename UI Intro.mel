@@ -1,1 +1,14 @@
-//
+window;
+columnLayout;
+button;
+button;
+intField;
+rowLayout -numberOfColumns 3;
+button;
+textField;
+columnLayout;
+button;
+button;
+button;
+
+showWindow;
