@@ -7,8 +7,7 @@ global proc Duplicate(int $minX, int $minY, int $minZ, int $maxX, int $maxY, int
     int $maxY;
     int $maxZ;
     int $duplicateInt;
-    
-   // int $randPosition = `rand <<$minX, $minY, $minZ>> <<$maxX, $maxY, $maxZ>>`;
+
 
     for($i=1; $i<=$duplicateInt; $i++)
     {
@@ -53,18 +52,32 @@ global proc DuplicateUI()
                     -resizeToFitChildren 1
                     $mWindow`;
     string $mColumn1 = `columnLayout -parent $mWindow -adjustableColumn 1`;
-    string $mColumn2 = `columnLayout -parent $mWindow -adjustableColumn 1`;
-
-    optionVar -stringValue "duplicate" `intField -parent $mColumn1`;
-    optionVar -stringValue "minXField" `intField -parent $mColumn1`;
-    optionVar -stringValue "minYField" `intField -parent $mColumn1`;
-    optionVar -stringValue "minZField" `intField -parent $mColumn1`;
-    optionVar -stringValue "maxXField" `intField -parent $mColumn2`;
-    optionVar -stringValue "maxYField" `intField -parent $mColumn2`;
-    optionVar -stringValue "maxZField" `intField -parent $mColumn2`;
+   
+    text -parent $mColumn1 -label "Amount of Duplicates";
+    optionVar -stringValue "duplicate" `intField -parent $mColumn1 `;
+    
+    text -parent $mColumn1 -label "Minimum X Value";
+    optionVar -stringValue "minXField" `intField -parent $mColumn1 `;
+    
+    text -parent $mColumn1 -label "Minimum Y Value";
+    optionVar -stringValue "minYField" `intField -parent $mColumn1 `;
+    
+    text -parent $mColumn1 -label "Minimum Z Value";
+    optionVar -stringValue "minZField" `intField -parent $mColumn1 `;
+    
+    text -parent $mColumn1 -label "Maximum X Value";
+    optionVar -stringValue "maxXField" `intField -parent $mColumn1 `;
+    
+    text -parent $mColumn1 -label "Maximum Y Value";
+    optionVar -stringValue "maxYField" `intField -parent $mColumn1 `;
+    
+    text -parent $mColumn1 -label "Maximum Z Value";
+    optionVar -stringValue "maxZField" `intField -parent $mColumn1 `;
 
     button -parent $mColumn1 -label "Duplicate" -command "DuplicateCmd";
     
     showWindow $mWindow;
 
 }
+
+DuplicateUI();
