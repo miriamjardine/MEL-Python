@@ -1,0 +1,39 @@
+Arithmetic Operators
++ : Add
+- : Sub
+* : Mult
+/ : Div
+% : Modulus (remainder)
+** : Exp
+// : Floor Div (round down to nearest whole)
+
+Assignment Operators
+= : Assign right to left (name = "tim")
++= : Add value on left to value on right and reassign to variable on left
+-= : Subtracts ""
+*= : Multiples ""
+/= : Divides ""
+%= : Modulus ""
+**= : Expon ""
+// : Floor divides ""
+
+Comparison Operators
+== : Equal to (3==3)
+!= : Not Equal to (3 != 5)
+> : Greater than
+< : Less than
+>= : Greater than or equal
+<= : less than or equal
+
+Logical Operators
+and : returns True if both statements are true ( 3<5 and 5 != 3)
+or : returns True if one statement is true ( 3>5 and 5 != 3)
+not : Reverse the result not( 3>5 and 5 != 3)
+
+Identity Operators
+is : Returns True if both variables are the same object (x is y)
+is not: Returns True if both variables are not the same object (x is not y)
+
+Membership Operators
+in : Returns true if a sequence with the specified value is present in the object
+not in : Returns true if a sequence with the specified value is not present in the object
