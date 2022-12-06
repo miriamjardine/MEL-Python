@@ -1,0 +1,39 @@
+Methods are different than functions
+- applies code to things with specific attributes
+- this is probably what you would use for the jnt namer tool (change specifically joints)
+- examples include temp.sort, random.uniform, cmds.xform
+- you can google python string methods and get helpful stuff
+
+Joint namer tool
+
+User input is a string formatted like "Leg_##_Jnt"
+- get selection > list of strings
+    sels = cmds.ls(sl=True)
+- loop through selection
+    track iteration (i)
+        for sel in sels:
+        or
+        for i in range(len(sels))
+        
+- find # characters
+    string method count
+- Count "#" symbols
+- #s must be consecutive
+    string method find
+        find["#" * count] so it will look to see if it goes #### or whatever
+            txt = "Leg_###_Jnt"
+            count = txt.count('#')
+            x = txt.partition("#" * count)
+            print(x)
+    otherwise error
+    cmds.error('')
+
+- rename
+    prefix: string method find
+        if you do that method, it will find the first instance of the pounds and you know where the prefix ends
+
+    , suffix, number
+
+Other Methods Clayton Mentioned:
+    rpartition
+    zfill
