@@ -3,7 +3,7 @@ import maya.cmds as cmds
 txt = input()
 sels = cmds.ls(sl=True)
 
-for i in range(len(sels)):
+for i, sel in enumerate(sels):
     count = txt.count('#')
     x = txt.find("#" * count)
     if x == 0:
@@ -16,4 +16,4 @@ for i in range(len(sels)):
     str_num = str(num)
     digit = str_num.zfill(count)
     middle = txt.replace("#"*count, digit)
-    print(middle)
+    cmds.rename(sel, middle)
