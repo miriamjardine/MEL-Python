@@ -11,10 +11,12 @@ User input is a string formatted like "Leg_##_Jnt"
     sels = cmds.ls(sl=True)
 - loop through selection
     track iteration (i)
-        for sel in sels:
-        or
-        for i in range(len(sels))
-        
+        **Clayton is trying to add to the confusion with enumerate
+            for sel in sels:
+            or
+            for i in range(len(sels)):
+            or
+            for i, sel in enumerate(sels):
 - find # characters
     string method count
 - Count "#" symbols
@@ -31,8 +33,8 @@ User input is a string formatted like "Leg_##_Jnt"
 - rename
     prefix: string method find
         if you do that method, it will find the first instance of the pounds and you know where the prefix ends
-
-    , suffix, number
+    suffix
+    number
 
 Other Methods Clayton Mentioned:
     rpartition
