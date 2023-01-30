@@ -38,7 +38,7 @@ def create_controls(shape='circle'):
                                     sections=8,
                                     constructionHistory=True)[0]
 #       You can add elif statements for different shapes
-        
+
         else:
             cmds.error('%s not valid arguement' % (shape))
 
@@ -83,8 +83,8 @@ def group(obj):
     cmds.select(cl=True)
 
     grp = cmds.group(world=True, empty=True)
-    cmds.rename(grp, '%s_Grp' % (obj))
-    cmds.xform(group,
+    grp = cmds.rename(grp, '%s_Grp' % (obj))
+    cmds.xform(grp,
                worldSpace=True,
                translation=xform_data[0],
                rotation=xform_data[1],
