@@ -39,6 +39,14 @@ def create_controls(shape='circle'):
                                     constructionHistory=True)[0]
 #       You can add elif statements for different shapes
 
+        if shape is 'square':
+            ctrl = cmds.nurbsSquare(center=[0,0,0],
+                                    normal=[0,1,0],
+                                    sideLength1=1,
+                                    sideLength2=1,
+                                    spansPerSide=1,
+                                    degree=3,
+                                    constructionHistory=True)[0]
         else:
             cmds.error('%s not valid arguement' % (shape))
 
