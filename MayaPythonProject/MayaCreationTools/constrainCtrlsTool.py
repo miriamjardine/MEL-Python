@@ -15,10 +15,12 @@ def constrain_ctrls():
     child_ctrl_grp = cmds.listRelatives(child_ctrl, parent=True)[0] #[child ctrl's parent node]
 
     # create constraints
-    p_constraint_trans = cmds.parentConstraint(maintainOffest=True,
+    p_constraint_trans = cmds.parentConstraint(parent_ctrl, child_ctrl_grp,
+                                               maintainOffset=True,
                                                skipRotate=['x','y','z'],
                                                weight=1)[0] #translate constraint
-    p_constraint_rot =cmds.parentConstraint(maintainOffest=True,
+    p_constraint_rot =cmds.parentConstraint(parent_ctrl, child_ctrl_grp,
+                                            maintainOffset=True,
                                             skipTranslate=['x','y','z'],
                                             weight=1)[0] #rotate constraint
 
