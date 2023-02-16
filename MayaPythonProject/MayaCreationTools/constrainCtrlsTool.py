@@ -23,27 +23,32 @@ def constrain_ctrls():
                                             maintainOffset=True,
                                             skipTranslate=['x','y','z'],
                                             weight=1)[0] #rotate constraint
+    cmds.scaleConstraint(parent_ctrl, child_ctrl_grp, weight=1)
 
     # create attributes on the child ctrl
 
-    cmds.addAttr(child_ctrl,
-                 longName='FollowTranslate',
-                 attributeType='double',
-                 minValue=0,
-                 maxValue=1,
-                 defaultValue=1,)
-    cmds.setAttr(('%s.FollowTranslate' % (child_ctrl)),
-                 e=True,
-                 keyable=True,)
-    cmds.addAttr(child_ctrl,
-                 longName='FollowRotate',
-                 attributeType='double',
-                 minValue=0,
-                 maxValue=1,
-                 defaultValue=1,)
-    cmds.setAttr(('%s.FollowRotate' % (child_ctrl)),
-                 e=True,
-                 keyable=True,)
+    if not cmds.attributeQuery('FollowTranslate', node=child_ctrl, exists=True):
+        cmds.addAttr(child_ctrl,
+                     longName='FollowTranslate',
+                     attributeType='double',
+                     minValue=0,
+                     maxValue=1,
+                     defaultValue=1,)
+        cmds.setAttr(('%s.FollowTranslate' % (child_ctrl)),
+                     e=True,
+                     keyable=True,)
+
+
+    if not cmds.attributeQuery('FollowRotate', node=child_ctrl, exists=True):
+        cmds.addAttr(child_ctrl,
+                     longName='FollowRotate',
+                     attributeType='double',
+                     minValue=0,
+                     maxValue=1,
+                     defaultValue=1,)
+        cmds.setAttr(('%s.FollowRotate' % (child_ctrl)),
+                     e=True,
+                     keyable=True,)
 
     # connect attributes from child ctrl to constraint weights
 
