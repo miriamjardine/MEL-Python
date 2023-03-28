@@ -1,6 +1,7 @@
 import maya.cmds as cmds
 
 #created using the guidance of professor Clayton Lantz
+# this script constrains the ctrls to the ctrl system. Not to the joints.
 
 def constrain_ctrls():
 # make viewport selection, parent ctrl and then child ctrl
@@ -62,5 +63,19 @@ def constrain_ctrls():
 
 constrain_ctrls()
 
+def constrain_ctrl_basic():
+
+    #select ctrl and then jnt
+
+    sels = cmds.ls(sl=True)
+    ctrl_sel = sels[0]
+    jnt_sel = sels[1]
+
+    # create constraints
+
+    cmds.parentConstraint(ctrl_sel, jnt_sel, maintainOffset=True, weight=1) #parent constraint
+    cmds.scaleConstraint(ctrl_sel, jnt_sel, maintainOffset=True, weight=1) #scale constraint
+
+constrain_ctrl_basic()
 
 

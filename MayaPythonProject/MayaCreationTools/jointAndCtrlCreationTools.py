@@ -31,7 +31,7 @@ def create_controls(shape='circle'):
             ctrl = cmds.circle(center=[0,0,0],
                                     normal=[1,0,0],
                                     sweep=360,
-                                    radius=10,
+                                    radius=.25,
                                     degree=3,
                                     ut=0,
                                     tolerance=.01,
@@ -96,5 +96,6 @@ def group(obj):
     cmds.select(obj, r=True)
     return [obj, grp]
 
-create_joints()
+#create_joints()
 create_controls()
+
