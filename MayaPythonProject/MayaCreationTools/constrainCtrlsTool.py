@@ -63,19 +63,6 @@ def constrain_ctrls():
 
 constrain_ctrls()
 
-def constrain_ctrl_basic():
 
-    #select ctrl and then jnt
-
-    sels = cmds.ls(sl=True)
-    ctrl_sel = sels[0]
-    jnt_sel = sels[1]
-
-    # create constraints
-
-    cmds.parentConstraint(ctrl_sel, jnt_sel, maintainOffset=True, weight=1) #parent constraint
-    cmds.scaleConstraint(ctrl_sel, jnt_sel, maintainOffset=True, weight=1) #scale constraint
-
-constrain_ctrl_basic()
 
 
